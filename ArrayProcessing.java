@@ -1,18 +1,18 @@
 import java.util.Scanner;
 public class ArrayProcessing {
 
-    int[] intArray = new int[5];
+    int[] array = new int[5];
     Scanner scan = new Scanner(System.in);
     public ArrayProcessing(){
         scan = this.scan;
-        intArray = this.intArray;
+        array = this.array;
         getNumbers();
         processNumbers();
     }
     public void getNumbers(){
         System.out.println("Enter 5 separate whole numbers: ");
-        for(int i = 0; i < intArray.length; i++){
-            intArray[i] = scan.nextInt();
+        for(int i = 0; i < array.length; i++){
+            array[i] = scan.nextInt();
         }
     }
     public void processNumbers(){
@@ -30,13 +30,14 @@ public class ArrayProcessing {
             else if(choice == 4){
                 reverse();
             }else{
-                System.out.println("Error...\nPlease enter valid input.");
+                System.out.println("Error, try again");
             }
         }
 
     }
     public int printMenu(){
         int choice;
+        System.out.println("Choose an option to perform:");
         System.out.println("1) Add numbers");
         System.out.println("2) Multiply numbers");
         System.out.println("3) Print numbers");
@@ -46,42 +47,40 @@ public class ArrayProcessing {
     }
     public void add(){
         int sum = 0;
-        for(int i = 0; i< intArray.length; i++){
-            sum = sum + intArray[i];
+        for(int i = 0; i< array.length; i++){
+            sum = sum + array[i];
         }
-        System.out.println("The sum of the values equals "+sum);
+        System.out.println("Added = "+sum);
     }
     public void mult(){
         int multSum = 1;
-        for(int i = 0; i< intArray.length; i++){
-            multSum = multSum * intArray[i];
+        for(int i = 0; i< array.length; i++){
+            multSum = multSum * array[i];
         }
-        System.out.println("The values multiplied equals "+multSum);
+        System.out.println("Multiplied = "+multSum);
     }
     public void print(){
 
-        for(int i = 0; i< intArray.length; i++){
-            System.out.println("Print value: "+ intArray[i]);
+        for(int i = 0; i< array.length; i++){
+            System.out.println("Printed = "+array[i]);
         }
     }
-
     public void reverse(){
-        for(int i = intArray.length-1; i>-1; i--) {
-            System.out.println("In reverse: "+ intArray[i]);
+        for(int i = array.length-1; i>-1; i--) {
+            System.out.print("IN REVERSE ORDER = "+array[i]);
         }
     }
     public boolean again(){
         int playAgain = 0;
-        System.out.println("Enter 1 to choose another option, enter anything else to end: ");
+        System.out.println("Enter 1 to choose another option or 2 to exit");
         playAgain = scan.nextInt();
         if (playAgain == 1){
             return true;
         } else {
-            return false;
+            return scan.nextInt() !=2;
         }
     }
     public static void main(String[] args) {
         new ArrayProcessing();
     }
-
 }
